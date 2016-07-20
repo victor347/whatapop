@@ -1,0 +1,57 @@
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="box">
+                    <h4>Lista de productos</h4>
+                </div>
+
+                <div class="col-md-3 col-sm-6" ng-repeat="product in $ctrl.products | filter:$ctrl.filtro">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a ng-link="['ProductDetail', { id: product.id }]">
+                                        <img ng-src="{{ $ctrl.obtenerRutaImagen(product.photos[0]) }}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a ng-link="['ProductDetail', { id: product.id }]">
+                                        <img ng-src="{{ $ctrl.obtenerRutaImagen(product.photos[0]) }}" alt="" class="img-responsive">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="detail.html" class="invisible">
+                            <img src="img/product2.jpg" alt="" class="img-responsive">
+                        </a>
+                        <div class="text">
+                            <h3><a href="detail.html">{{product.name}}</a></h3>
+                            <p class="price">
+                                {{product.price | currency}}
+                            </p>
+                            <p class="buttons">
+                                <a ng-link="['ProductDetail', { id: product.id }]" class="btn btn-default">Ver detalles</a>
+                                <a href="" class="btn btn-primary" ng-show="product.state==='selling'"><i class="fa fa-shopping-cart"></i> Comprar</a>
+                            </p>
+                        </div>
+
+
+                        <div class="ribbon gift" ng-show="product.state==='sold'">
+                            <div class="theribbon">Vendido</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+                    </div>
+                    <!-- /.product -->
+                </div>
+            </div>
+            <!-- /.col-md-9 -->
+        </div>
+        <!-- /#content -->
+    </div>
+    <!-- /#all -->
+</div>
+
+
+

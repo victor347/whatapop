@@ -1,0 +1,82 @@
+<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand home" ng-link="['Products']" data-animate-hover="bounce">
+                <img src="img/logo.png" class="hidden-xs">
+                <img src="img/logo-small.png" class="visible-xs"><span class="sr-only"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div id="all">
+    <div id="content">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row" id="productMain">
+                    <div class="col-sm-3">
+                        <div id="mainImage">
+                            <img ng-src="{{$ctrl.obtenerRutaImagen($ctrl.product.photos[0]) }}" alt="" class="img-responsive">
+                        </div>
+
+                        <div class="ribbon sale" ng-show="$ctrl.product.category.id===1">
+                            <div class="theribbon">Juego</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                        <div class="ribbon new" ng-show="$ctrl.product.category.id===2">
+                            <div class="theribbon">Pelicula</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        <!-- /.ribbon -->
+
+                        <div class="ribbon gift" ng-show="$ctrl.product.category.id===3">
+                            <div class="theribbon">Libro</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="box">
+                            <h1 class="text-center">{{$ctrl.product.name}}</h1>
+
+                            <p class="price">{{$ctrl.product.price | currency}}</p>
+
+                            <p class="text-center buttons">
+                                <a class="btn btn-primary" ng-show="$ctrl.product.state==='selling'"><i class="fa fa-shopping-cart"></i> Comprar</a>
+                                <a ng-link="['Products']" class="btn btn-default"><i class="fa fa-chevron-left"></i> Volver</a>
+                            </p>
+                        </div>
+
+                        <div class="box" id="details">
+                            <div id="comments" data-animate="fadeInUp">
+                                <h4> Vendedor</h4>
+                                <div class="row comment">
+                                    <div class="col-sm-3 col-md-2 text-center-xs">
+                                        <p>
+                                            <img ng-src="{{$ctrl.obtenerRutaImagen($ctrl.product.seller.avatar) }}" class="img-responsive img-circle" alt="">
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-9 col-md-10">
+                                        <h5>{{$ctrl.product.seller.nick}}</h5>
+                                        <p class="posted"><i class="fa fa-clock-o"></i> {{$ctrl.product.published_date | date:"EEEE dd 'd'e MMMM 'd'e yyyy"}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <h4>Descripción</h4>
+                            <blockquote>
+                                <em>
+                                   <p ng-bind-html="$ctrl.product.description"></p>
+                                </em>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-md-9 -->
+        </div>
+        <!-- /.container -->
+    </div>
+</div>
